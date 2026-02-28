@@ -83,7 +83,7 @@ inline std::vector<long long> mul_small(const std::vector<long long>& a, long lo
   return res;
 }
 
-// Naive multiplication
+// Naive multiplication for small numbers
 static std::vector<long long> mul_naive(const std::vector<long long>& a, const std::vector<long long>& b) {
   if (a.empty() || b.empty()) return {0};
   if (a.size() == 1 && a[0] == 0) return {0};
@@ -109,7 +109,7 @@ static std::vector<long long> mul_naive(const std::vector<long long>& a, const s
 static std::vector<long long> karatsuba(const std::vector<long long>& a, const std::vector<long long>& b) {
   size_t n = std::max(a.size(), b.size());
   
-  if (n <= 64) return mul_naive(a, b);
+  if (n <= 32) return mul_naive(a, b);
   
   size_t m = n / 2;
   
